@@ -19,10 +19,10 @@
                 </thead>
             {{end}}
         {{end}}
+        <tbody>
         {{if .HasCustomTHead}}
             {{.CustomTHead}}
         {{end}}
-        <tbody>
         {{if eq .Type "data-table"}}
             {{$SortUrlParam := .SortUrl}}
             <tr>

@@ -1590,10 +1590,10 @@ var TemplateList = map[string]string{"403": `<div class="missing-content">
                 </thead>
             {{end}}
         {{end}}
+        <tbody>
         {{if .HasCustomTHead}}
             {{.CustomTHead}}
         {{end}}
-        <tbody>
         {{if eq .Type "data-table"}}
             {{$SortUrlParam := .SortUrl}}
             <tr>
