@@ -1589,9 +1589,9 @@ var TemplateList = map[string]string{"403": `<div class="missing-content">
                 </tr>
                 </thead>
             {{end}}
-            {{if .HasCustomTHead}}
-                {{.CustomTHead}}
-            {{end}}
+        {{end}}
+        {{if .HasCustomTHead}}
+            {{.CustomTHead}}
         {{end}}
         <tbody>
         {{if eq .Type "data-table"}}
