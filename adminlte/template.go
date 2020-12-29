@@ -1749,19 +1749,19 @@ var TemplateList = map[string]string{"403": `<div class="missing-content">
             </tbody>
             {{if .HasCustomTfoot}}
                 <tfoot>
-                <tr>
-                    {{range $key, $foot := .CustomTfoot}}
-                        {{if eq $foot.Width "0px"}}
-                            <th>
-                        {{else if eq $foot.Width ""}}
-                            <th>
-                        {{else}}
-                            <th style="width: {{$foot.Width}}">
+                    <tr>
+                        {{range $key, $foot := .CustomTfoot}}
+                            {{if eq $foot.Width "0px"}}
+                                <th>
+                            {{else if eq $foot.Width ""}}
+                                <th>
+                            {{else}}
+                                <th style="width: {{$foot.Width}}">
+                            {{end}}
+                            {{$foot.Head}}
+                            </th>
                         {{end}}
-                        {{$foot.Head}}
-                        </th>
-                    {{end}}
-                </tr>
+                    </tr>
                 </tfoot>
             {{end}}
         </table>
