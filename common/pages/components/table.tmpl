@@ -19,8 +19,35 @@
                 </thead>
             {{end}}
         {{end}}
-        {{if .HasCustomTHead}}
-            {{.CustomTHead}}
+        {{if .HasCustomThead}}
+            <thead>
+            <tr>
+                {{range $key, $head := .CustomThead.CustomThead}}
+                    {{if eq $head.Width "0px"}}
+                        <th rowspan="{{$head.RowSpan}}" colspan="{{$head.ColSpan}}">
+                    {{else if eq $head.Width ""}}
+                        <th rowspan="{{$head.RowSpan}}" colspan="{{$head.ColSpan}}">
+                    {{else}}
+                        <th style="width: {{$head.Width}}" rowspan="{{$head.RowSpan}}" colspan="{{$head.ColSpan}}">
+                    {{end}}
+                    {{$head.Head}}
+                    </th>
+                {{end}}
+            </tr>
+            {{range $key, $head := .CustomThead.ColSpanCustomThead}}
+                <tr>
+                    {{if eq $head.Width "0px"}}
+                        <th>
+                    {{else if eq $head.Width ""}}
+                        <th>
+                    {{else}}
+                        <th style="width: {{$head.Width}}">
+                    {{end}}
+                    {{$head.Head}}
+                    </th>
+                </tr>
+            {{end}}
+            </thead>
         {{end}}
         <tbody>
         {{if eq .Type "data-table"}}
@@ -149,6 +176,23 @@
             </tr>
         {{end}}
         </tbody>
+        {{if .HasCustomFoot}}
+            <tfoot>
+            <tr>
+                {{range $key, $foot := .CustomTfoot}}
+                    {{if eq $foot.Width "0px"}}
+                        <th>
+                    {{else if eq $foot.Width ""}}
+                        <th>
+                    {{else}}
+                        <th style="width: {{$foot.Width}}">
+                    {{end}}
+                    {{$foot.Head}}
+                    </th>
+                {{end}}
+            </tr>
+            </tfoot>
+        {{end}}
     </table>
     {{if eq $Type "data-table"}}
         <script>
