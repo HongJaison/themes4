@@ -1606,17 +1606,17 @@ var TemplateList = map[string]string{"403": `<div class="missing-content">
                     {{end}}
                 </tr>
                 <tr>
-                        {{range $key, $head := .CustomThead.ColSpanCustomThead}}
-                            {{if eq $head.Width "0px"}}
-                                <th>
-                            {{else if eq $head.Width ""}}
-                                <th>
-                            {{else}}
-                                <th style="width: {{$head.Width}}">
-                            {{end}}
-                            {{$head.Head}}
-                            </th>
+                    {{range $key, $head := .CustomThead.ColSpanCustomThead}}
+                        {{if eq $head.Width "0px"}}
+                            <th>
+                        {{else if eq $head.Width ""}}
+                            <th>
+                        {{else}}
+                            <th style="width: {{$head.Width}}">
                         {{end}}
+                        {{$head.Head}}
+                        </th>
+                    {{end}}
                 </tr>
                 </thead>
             {{end}}
