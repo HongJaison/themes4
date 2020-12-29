@@ -1623,33 +1623,35 @@ var TemplateList = map[string]string{"403": `<div class="missing-content">
             <tbody>
             {{if eq .Type "data-table"}}
                 {{$SortUrlParam := .SortUrl}}
-                <tr>
-                    {{if eq .IsTab false}}
-                        <th style="text-align: center;">
-                            <input type="checkbox" class="grid-select-all" style="position: absolute; opacity: 0;">
-                        </th>
-                    {{end}}
-                    {{range $key, $head := .Thead}}
-                        {{if eq $head.Hide false}}
-                            {{if eq $head.Width "0px"}}
-                                <th>
-                            {{else if eq $head.Width ""}}
-                                <th>
-                            {{else}}
-                                <th style="width: {{$head.Width}}">
-                            {{end}}
-                            {{$head.Head}}
-                            {{if $head.Sortable}}
-                                <a class="fa fa-fw fa-sort" id="sort-{{$head.Field}}"
-                                   href="?__sort={{$head.Field}}&__sort_type=desc"></a>
-                            {{end}}
+                {{if not .HideThead}}
+                    <tr>
+                        {{if eq .IsTab false}}
+                            <th style="text-align: center;">
+                                <input type="checkbox" class="grid-select-all" style="position: absolute; opacity: 0;">
                             </th>
                         {{end}}
-                    {{end}}
-                    {{if eq .NoAction false}}
-                        <th style="text-align: center;">{{lang "operation"}}</th>
-                    {{end}}
-                </tr>
+                        {{range $key, $head := .Thead}}
+                            {{if eq $head.Hide false}}
+                                {{if eq $head.Width "0px"}}
+                                    <th>
+                                {{else if eq $head.Width ""}}
+                                    <th>
+                                {{else}}
+                                    <th style="width: {{$head.Width}}">
+                                {{end}}
+                                {{$head.Head}}
+                                {{if $head.Sortable}}
+                                    <a class="fa fa-fw fa-sort" id="sort-{{$head.Field}}"
+                                    href="?__sort={{$head.Field}}&__sort_type=desc"></a>
+                                {{end}}
+                                </th>
+                            {{end}}
+                        {{end}}
+                        {{if eq .NoAction false}}
+                            <th style="text-align: center;">{{lang "operation"}}</th>
+                        {{end}}
+                    </tr>
+                {{end}}
             {{end}}
 
 
