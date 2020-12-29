@@ -1,5 +1,11 @@
 {{define "table"}}
+
+{{if eq .TableID ""}}
     <table class="table table-{{.Style}}" style="min-width: {{.MinWidth}};table-layout: {{.Layout}};">
+{{else}}
+    <table class="table table-{{.Style}}" id={{.TableID}} style="display: table;">
+{{end}}
+
         {{if eq .Type "table"}}
             {{if not .HideThead}}
                 <thead>

@@ -1565,12 +1565,12 @@ var TemplateList = map[string]string{"403": `<div class="missing-content">
 	// modified by jaison
 	"components/table": `{{define "table"}}
 
-    {{if eq .TableID ""}}
+{{if eq .TableID ""}}
         <table class="table table-{{.Style}}" style="min-width: {{.MinWidth}};table-layout: {{.Layout}};">
-    {{else}}
+{{else}}
         <table class="table table-{{.Style}}" id={{.TableID}} style="display: table;">
-    {{end}}
-    
+{{end}}
+
             {{if eq .Type "table"}}
                 {{if not .HideThead}}
                     <thead>
@@ -1651,8 +1651,8 @@ var TemplateList = map[string]string{"403": `<div class="missing-content">
                     {{end}}
                 </tr>
             {{end}}
-    
-    
+
+
             {{$NoAction := .NoAction}}
             {{$Action := .Action}}
             {{$Thead := .Thead}}
@@ -1774,7 +1774,7 @@ var TemplateList = map[string]string{"403": `<div class="missing-content">
                     });
                     return selected;
                 };
-    
+
                 const selectedAllFieldsRows = function () {
                     let selected = [];
                     $('.column-select-item:checked').each(function () {
@@ -1782,10 +1782,10 @@ var TemplateList = map[string]string{"403": `<div class="missing-content">
                     });
                     return selected;
                 };
-    
+
                 const pjaxContainer = "#pjax-container";
                 const noAnimation = "__go_admin_no_animation_";
-    
+
                 function iCheck(el) {
                     el.iCheck({checkboxClass: 'icheckbox_minimal-blue'}).on('ifChanged', function () {
                         if (this.checked) {
@@ -1795,9 +1795,9 @@ var TemplateList = map[string]string{"403": `<div class="missing-content">
                         }
                     });
                 }
-    
+
                 $(function () {
-    
+
                     $('.grid-select-all').iCheck({checkboxClass: 'icheckbox_minimal-blue'}).on('ifChanged', function (event) {
                         if (this.checked) {
                             $('.grid-row-checkbox').iCheck('check');
@@ -1821,17 +1821,17 @@ var TemplateList = map[string]string{"403": `<div class="missing-content">
                             }
                         }
                     }
-    
+
                     {{if .HasFilter}}{{if .IsHideFilterArea}}
                     $('.filter-area').hide();
                     {{end}}{{end}}
-    
+
                     // Fix PopUp error of table row action
-    
+
                     let lastTd = $("table tr:last td:last div");
                     if (lastTd.hasClass("dropdown")) {
                         let popUpHeight = $("table tr:last td:last div ul").height();
-    
+
                         let trs = $("table tr");
                         let totalHeight = 0;
                         for (let i = 1; i < trs.length - 1; i++) {
@@ -1841,7 +1841,7 @@ var TemplateList = map[string]string{"403": `<div class="missing-content">
                             let h = popUpHeight + 16;
                             $("table tbody").append("<tr style='height:" + h + "px;'></tr>");
                         }
-    
+
                         trs = $("table tr");
                         for (let i = trs.length - 1; i > 1; i--) {
                             let td = $(trs[i]).find("td:last-child div");
@@ -1855,12 +1855,12 @@ var TemplateList = map[string]string{"403": `<div class="missing-content">
                             }
                         }
                     }
-    
+
                     // Initialize sort parameters
-    
+
                     let sort = getQueryVariable("__sort");
                     let sort_type = getQueryVariable("__sort_type");
-    
+
                     if (sort !== -1 && sort_type !== -1) {
                         let sortFa = $('#sort-' + sort);
                         if (sort_type === 'asc') {
@@ -1878,13 +1878,13 @@ var TemplateList = map[string]string{"403": `<div class="missing-content">
                         }
                     }
                 });
-    
+
                 // ============================
                 // .IsHideRowSelector
                 // ============================
-    
+
                 {{if ne .IsHideRowSelector true}}
-    
+
                 $('.column-select-all').unbind('click').on('click', function () {
                     if ($(this).data('check') === '') {
                         $('.column-select-item').iCheck('check');
@@ -1894,40 +1894,40 @@ var TemplateList = map[string]string{"403": `<div class="missing-content">
                         $(this).data('check', '')
                     }
                 });
-    
+
                 $('.column-select-submit').unbind('click').on('click', function () {
-    
+
                     let param = new Map();
                     param.set('__columns', selectedAllFieldsRows().join(','));
                     param.set(noAnimation, 'true');
-    
+
                     $.pjax({
                         url: addParameterToURL(param),
                         container: pjaxContainer
                     });
-    
+
                     toastr.success('{{lang "reload succeeded"}} !');
                 });
-    
+
                 {{end}}
-    
+
                 // ============================
                 // end
                 // ============================
-    
+
                 // ============================
                 // .ExportUrl
                 // ============================
-    
+
                 {{if .ExportUrl}}
-    
+
                 $('.grid-batch-1').unbind('click').on('click', function () {
                     let rows = selectedRows();
                     if (rows.length > 0) {
                         ExportAll(rows.join())
                     }
                 });
-    
+
                 function ExportAll(id) {
                     let form = $("<form>");
                     form.attr("style", "display:none");
@@ -1943,30 +1943,30 @@ var TemplateList = map[string]string{"403": `<div class="missing-content">
                     form.submit();
                     form.remove()
                 }
-    
+
                 {{end}}
-    
+
                 // ============================
                 // end
                 // ============================
-    
+
                 // ============================
                 // .DeleteUrl
                 // ============================
-    
+
                 {{if .DeleteUrl}}
-    
+
                 $('.grid-row-delete').unbind('click').click(function () {
                     DeletePost($(this).data('id'))
                 });
-    
+
                 $('.grid-batch-0').unbind('click').on('click', function () {
                     let rows = selectedRows();
                     if (rows.length > 0) {
                         DeletePost(rows.join())
                     }
                 });
-    
+
                 function DeletePost(id) {
                     swal({
                             title: {{lang "are you sure to delete"}},
@@ -1999,7 +1999,7 @@ var TemplateList = map[string]string{"403": `<div class="missing-content">
                                         let lastTd = $("table tr:last td:last div");
                                         if (lastTd.hasClass("dropdown")) {
                                             let popUpHeight = $("table tr:last td:last div ul").height();
-    
+
                                             let trs = $("table tr");
                                             let totalHeight = 0;
                                             for (let i = 1; i < trs.length - 1; i++) {
@@ -2025,17 +2025,17 @@ var TemplateList = map[string]string{"403": `<div class="missing-content">
                             });
                         });
                 }
-    
+
                 {{end}}
-    
+
                 // ============================
                 // end
                 // ============================
-    
+
                 // ============================
                 // Helper functions
                 // ============================
-    
+
                 function getQueryVariable(variable) {
                     let query = window.location.search.substring(1);
                     let vars = query.split("&");
@@ -2047,10 +2047,10 @@ var TemplateList = map[string]string{"403": `<div class="missing-content">
                     }
                     return -1;
                 }
-    
+
                 function addParameterToURL(params) {
                     let newUrl = location.href.replace("#", "");
-    
+
                     for (let [field, value] of params) {
                         if (getQueryVariable(field) !== -1) {
                             newUrl = replaceParamVal(newUrl, field, value);
@@ -2062,17 +2062,17 @@ var TemplateList = map[string]string{"403": `<div class="missing-content">
                             }
                         }
                     }
-    
+
                     return newUrl
                 }
-    
+
                 function replaceParamVal(oUrl, paramName, replaceWith) {
                     let re = eval('/(' + paramName + '=)([^&]*)/gi');
                     return oUrl.replace(re, paramName + '=' + replaceWith);
                 }
-    
+
                 $(function () {
-    
+
                     $('.editable-td-select').editable({
                         "type": "select",
                         "emptytext": "<i class=\"fa fa-pencil\"><\/i>"
@@ -2162,7 +2162,7 @@ var TemplateList = map[string]string{"403": `<div class="missing-content">
                         }
                     })
                 });
-    
+
                 {{renderRowDataJS "" .ActionJs}}
             </script>
             <style>
@@ -2172,7 +2172,7 @@ var TemplateList = map[string]string{"403": `<div class="missing-content">
                 }
             </style>
         {{end}}
-    {{end}}`,
+{{end}}`,
 
 	"components/tabs": `{{define "tabs"}}
 <div class="nav-tabs-custom">
