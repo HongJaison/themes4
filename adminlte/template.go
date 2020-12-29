@@ -1605,8 +1605,8 @@ var TemplateList = map[string]string{"403": `<div class="missing-content">
                         </th>
                     {{end}}
                 </tr>
-                {{range $key, $head := .CustomThead.ColSpanCustomThead}}
-                    <tr>
+                <tr>
+                    {{range $key, $head := .CustomThead.ColSpanCustomThead}}
                         {{if eq $head.Width "0px"}}
                             <th>
                         {{else if eq $head.Width ""}}
@@ -1616,8 +1616,8 @@ var TemplateList = map[string]string{"403": `<div class="missing-content">
                         {{end}}
                         {{$head.Head}}
                         </th>
-                    </tr>
-                {{end}}
+                    {{end}}
+                </tr>
                 </thead>
             {{end}}
             <tbody>
