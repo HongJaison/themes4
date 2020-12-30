@@ -1598,8 +1598,10 @@ var TemplateList = map[string]string{"403": `<div class="missing-content">
                             <th rowspan="{{$head.RowSpan}}" colspan="{{$head.ColSpan}}">
                         {{else if eq $head.Width ""}}
                             <th rowspan="{{$head.RowSpan}}" colspan="{{$head.ColSpan}}">
-                        {{else}}
+                    {{else if eq $head.Style ""}}
                             <th style="width: {{$head.Width}}" rowspan="{{$head.RowSpan}}" colspan="{{$head.ColSpan}}">
+                    {{else}}
+                        <th style="{{$head.Style}}" rowspan="{{$head.RowSpan}}" colspan="{{$head.ColSpan}}">
                         {{end}}
                         {{$head.Head}}
                         </th>
@@ -1611,8 +1613,10 @@ var TemplateList = map[string]string{"403": `<div class="missing-content">
                             <th>
                         {{else if eq $head.Width ""}}
                             <th>
-                        {{else}}
+                    {{else if eq $head.Style ""}}
                             <th style="width: {{$head.Width}}">
+                    {{else}}
+                        <th style="{{$head.Style}}">
                         {{end}}
                         {{$head.Head}}
                         </th>
@@ -1636,8 +1640,10 @@ var TemplateList = map[string]string{"403": `<div class="missing-content">
                                     <th>
                                 {{else if eq $head.Width ""}}
                                     <th>
-                                {{else}}
+                            {{else if eq $head.Style ""}}
                                     <th style="width: {{$head.Width}}">
+                            {{else}}
+                                <th style="{{$head.Style}}">
                                 {{end}}
                                 {{$head.Head}}
                                 {{if $head.Sortable}}
@@ -1739,8 +1745,10 @@ var TemplateList = map[string]string{"403": `<div class="missing-content">
                         {{range $key2, $head2 := $Thead}}
                             {{if eq $head2.Width ""}}
                                 <td>
-                            {{else}}
+                        {{else if eq $head2.Style ""}}
                                 <td style="width: {{$head2.Width}}">
+                        {{else}}
+                            <td style="{{$head2.Width}}">
                             {{end}}
                             {{(index $info $head2.Head).Content}}
                             </td>
@@ -1757,8 +1765,10 @@ var TemplateList = map[string]string{"403": `<div class="missing-content">
                                 <th>
                             {{else if eq $foot.Width ""}}
                                 <th>
-                            {{else}}
+                        {{else if eq $foot.Style ""}}
                                 <th style="width: {{$foot.Width}}">
+                        {{else}}
+                            <th style="{{$foot.Style}}">
                             {{end}}
                             {{$foot.Head}}
                             </th>
