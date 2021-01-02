@@ -1579,7 +1579,7 @@ var TemplateList = map[string]string{"403": `<div class="missing-content">
                             {{if eq $head.Width "0px"}}
                                 <th>
                             {{else if eq $head.Width ""}}
-                                <th>
+                                <th style="text-align:center;">
                             {{else}}
                                 <th style="width: {{$head.Width}}">
                             {{end}}
@@ -1597,11 +1597,11 @@ var TemplateList = map[string]string{"403": `<div class="missing-content">
                         {{if eq $head.Width "0px"}}
                             <th rowspan="{{$head.RowSpan}}" colspan="{{$head.ColSpan}}">
                         {{else if eq $head.Width ""}}
-                            <th rowspan="{{$head.RowSpan}}" colspan="{{$head.ColSpan}}">
-                    {{else if eq $head.Style ""}}
+                            <th style="text-align:center;" rowspan="{{$head.RowSpan}}" colspan="{{$head.ColSpan}}">
+                        {{else if eq $head.Style ""}}
                             <th style="width: {{$head.Width}}" rowspan="{{$head.RowSpan}}" colspan="{{$head.ColSpan}}">
-                    {{else}}
-                        <th style="{{$head.Style}}" rowspan="{{$head.RowSpan}}" colspan="{{$head.ColSpan}}">
+                        {{else}}
+                            <th style="{{$head.Style}}" rowspan="{{$head.RowSpan}}" colspan="{{$head.ColSpan}}">
                         {{end}}
                         {{$head.Head}}
                         </th>
@@ -1612,11 +1612,11 @@ var TemplateList = map[string]string{"403": `<div class="missing-content">
                         {{if eq $head.Width "0px"}}
                             <th>
                         {{else if eq $head.Width ""}}
-                            <th>
-                    {{else if eq $head.Style ""}}
+                            <th style="text-align:center;">
+                        {{else if eq $head.Style ""}}
                             <th style="width: {{$head.Width}}">
-                    {{else}}
-                        <th style="{{$head.Style}}">
+                        {{else}}
+                            <th style="{{$head.Style}}">
                         {{end}}
                         {{$head.Head}}
                         </th>
@@ -1639,11 +1639,11 @@ var TemplateList = map[string]string{"403": `<div class="missing-content">
                                 {{if eq $head.Width "0px"}}
                                     <th>
                                 {{else if eq $head.Width ""}}
-                                    <th>
-                            {{else if eq $head.Style ""}}
+                                    <th style="text-align:center;">
+                                {{else if eq $head.Style ""}}
                                     <th style="width: {{$head.Width}}">
-                            {{else}}
-                                <th style="{{$head.Style}}">
+                                {{else}}
+                                    <th style="{{$head.Style}}">
                                 {{end}}
                                 {{$head.Head}}
                                 {{if $head.Sortable}}

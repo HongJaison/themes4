@@ -14,7 +14,7 @@
                         {{if eq $head.Width "0px"}}
                             <th>
                         {{else if eq $head.Width ""}}
-                            <th>
+                            <th style="text-align:center;">
                         {{else}}
                             <th style="width: {{$head.Width}}">
                         {{end}}
@@ -32,7 +32,7 @@
                     {{if eq $head.Width "0px"}}
                         <th rowspan="{{$head.RowSpan}}" colspan="{{$head.ColSpan}}">
                     {{else if eq $head.Width ""}}
-                        <th rowspan="{{$head.RowSpan}}" colspan="{{$head.ColSpan}}">
+                        <th style="text-align:center;" rowspan="{{$head.RowSpan}}" colspan="{{$head.ColSpan}}">
                     {{else if eq $head.Style ""}}
                         <th style="width: {{$head.Width}}" rowspan="{{$head.RowSpan}}" colspan="{{$head.ColSpan}}">
                     {{else}}
@@ -47,7 +47,7 @@
                     {{if eq $head.Width "0px"}}
                         <th>
                     {{else if eq $head.Width ""}}
-                        <th>
+                        <th style="text-align:center;">
                     {{else if eq $head.Style ""}}
                         <th style="width: {{$head.Width}}">
                     {{else}}
@@ -74,7 +74,7 @@
                             {{if eq $head.Width "0px"}}
                                 <th>
                             {{else if eq $head.Width ""}}
-                                <th>
+                                <th style="text-align:center;">
                             {{else if eq $head.Style ""}}
                                 <th style="width: {{$head.Width}}">
                             {{else}}
