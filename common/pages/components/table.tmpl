@@ -225,23 +225,23 @@
                 <tr>
                     {{range $key, $foot := .CustomTfoot}}
                         {{if eq $foot.Width "0px"}}
-                            {{if eq $head.Color ""}}
+                            {{if eq $foot.Color ""}}
                                 <th>
                             {{else}}
-                                <th style="color: {{$head.Color}}">
+                                <th style="color: {{$foot.Color}}">
                             {{end}}
                         {{else if eq $foot.Width ""}}
-                            {{if eq $head.Color ""}}
+                            {{if eq $foot.Color ""}}
                                 <th>
                             {{else}}
-                                <th style="color: {{$head.Color}}">
+                                <th style="color: {{$foot.Color}}">
                             {{end}}
                         {{else}}
                             <th>
-                            {{if eq $head.Color ""}}
+                            {{if eq $foot.Color ""}}
                                 <th style="width: {{$foot.Width}}">
                             {{else}}
-                                <th style="width: {{$foot.Width}};color: {{$head.Color}};">
+                                <th style="width: {{$foot.Width}};color: {{$foot.Color}};">
                             {{end}}
                         {{end}}
                         {{$foot.Head}}
